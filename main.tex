@@ -1,0 +1,62 @@
+% !TEX program = xelatex
+% !BIB program = biber
+\documentclass[header=true]{culscart}
+\addbibresource{refs.bib}
+
+\begin{document}
+
+% ---------- 题录 ----------
+\zhtitle   {中文论文标题}
+\entitle   {English Title of the Paper}
+\zhabstract{此处为中文摘要。简述研究背景、目的、方法、结果与结论。}
+\zhkeywords{关键词一；关键词二；关键词三}
+\maketitle
+
+% ---------- 正文 ----------
+\section{引言}
+正文示例。引用文献\cite{li2020}；行内公式 $E = mc^{2}$；行间公式
+\begin{equation}
+  \int_{-\infty}^{+\infty} e^{-x^{2}}\,\mathrm{d}x = \sqrt{\pi}.
+\end{equation}
+
+\section{材料与方法}
+\subsection{样本制备}此处接正文，二级标题与本段同行。
+
+\subsection{测序流程}
+\subsubsection{文库构建}此处接正文，三级标题与本句同行。
+\subsubsection{上机测序}使用 Illumina 平台。
+
+\begin{figure}[htbp]
+  \centering
+  \begin{subfigure}[b]{0.32\linewidth}\centering\rule{\linewidth}{2cm}\caption{}\label{fig:a}\end{subfigure}\hfill
+  \begin{subfigure}[b]{0.32\linewidth}\centering\rule{\linewidth}{2cm}\caption{}\label{fig:b}\end{subfigure}\hfill
+  \begin{subfigure}[b]{0.32\linewidth}\centering\rule{\linewidth}{2cm}\caption{}\label{fig:c}\end{subfigure}
+  \caption{示例图}\label{fig:demo}
+\end{figure}
+
+如图~\ref{fig:demo} 所示，数据见表~\ref{tab:demo}。
+
+\begin{table}[htbp]
+  \centering
+  \caption{示例表}\label{tab:demo}
+  \begin{tabular}{lccc}
+    \toprule
+    样本 & 测量值 1 & 测量值 2 & 备注 \\
+    \midrule
+    A & 1.23 & 4.56 & --- \\
+    B & 7.89 & 1.01 & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{结果与讨论}
+讨论参考国外综述\cite{smith2021review}、在线资源\cite{ncbi2024}与知名会议\cite{chen2022conf}。
+
+\section{结论}
+正文不超过 4 页，参考文献不超过 1 页；勿出现姓名、学校、团队编号。请勿直接出现“本团队已投稿发表某论文”“本团队已申请某专利”等此类描述。
+
+% ---------- 参考文献 ----------
+\printbibliography[heading=cnref]
+
+\end{document}
+
