@@ -127,16 +127,19 @@
 \newcommand{\songti}{\CJKfamily{songti}}
 
 % -------- 3.2 黑体 --------
+% heiti CJK family 故意不带 AutoFakeBold：黑体本身已经够重，且让 \bfseries
+% 在 \heiti 下作用于 Latin（TNR Bold）但保持 CJK 为 Heiti 常规字重 ——
+% 用于一级标题"数字粗、中文不伪粗"的需求。需要伪粗体的场合改用 \simhei。
 \IfFontExistsTF{SimHei}{%
-    \setCJKfamilyfont{heiti}{SimHei}[AutoFakeBold=3, AutoFakeSlant=0.25]%
+    \setCJKfamilyfont{heiti}{SimHei}[BoldFont=SimHei, AutoFakeSlant=0.25]%
     \newfontfamily\simhei{SimHei}[AutoFakeBold=3, AutoFakeSlant=0.25]%
 }{%
     \IfFileExists{fonts/simhei.ttc}{%
-        \setCJKfamilyfont{heiti}{simhei.ttc}[AutoFakeBold=3, AutoFakeSlant=0.25, Path=fonts/]%
+        \setCJKfamilyfont{heiti}{simhei.ttc}[BoldFont=simhei.ttc, AutoFakeSlant=0.25, Path=fonts/]%
         \newfontfamily\simhei{simhei.ttc}[AutoFakeBold=3, AutoFakeSlant=0.25, Path=fonts/]%
     }{%
         \IfFileExists{fonts/simhei.ttf}{%
-            \setCJKfamilyfont{heiti}{simhei.ttf}[AutoFakeBold=3, AutoFakeSlant=0.25, Path=fonts/]%
+            \setCJKfamilyfont{heiti}{simhei.ttf}[BoldFont=simhei.ttf, AutoFakeSlant=0.25, Path=fonts/]%
             \newfontfamily\simhei{simhei.ttf}[AutoFakeBold=3, AutoFakeSlant=0.25, Path=fonts/]%
         }{%
             \ClassWarning{culscart}{SimHei not found; using ctex default heiti}%
@@ -186,7 +189,8 @@
 % =============================================================================
 \ctexset{
   section = {
-    format     = \heiti\xiaosi,
+    format     = \heiti\xiaosi\bfseries,   % \bfseries 只让 Latin/数字 → TNR Bold；
+                                            % heiti family 无 AutoFakeBold，CJK 保持常规
     beforeskip = 0pt,
     afterskip  = 0pt,
   },
